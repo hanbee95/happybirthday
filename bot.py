@@ -8,7 +8,7 @@ from time import strftime
 from dateutil import parser
 from datetime import datetime
 
-loop = asyncio.get_event_loop()
+#loop = asyncio.get_event_loop()
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -20,10 +20,10 @@ def time_module():
         current_time = datetime.now().strftime("%H:%M")#hour %H min %M sec %S am:pm %p 
         #print (current_time)
         #print (ctxg)
-        if current_time == "08:01": # enter the time you wish 
+        if current_time == "07:34": # enter the time you wish 
             if ctxg != 0:
                 print ("send")
-                asyncio.run(to_yuumi(ctxg))
+                asyncio.run_coroutine_threadsafe(to_yuumi(ctxg), bot.loop)
             print("time module ended")
             break
 
@@ -44,6 +44,9 @@ async def pre(ctx):
     await ctx.send("prepared")
     global ctxg 
     ctxg = ctx
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    asyncio.get_event_loop()    
     time_module()
     
 @bot.command()
