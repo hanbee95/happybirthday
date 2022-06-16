@@ -20,7 +20,7 @@ def time_module():
         current_time = datetime.now().strftime("%H:%M")#hour %H min %M sec %S am:pm %p 
         #print (current_time)
         #print (ctxg)
-        if current_time == "07:34": # enter the time you wish 
+        if current_time == "00:00": # enter the time you wish 
             if ctxg != 0:
                 print ("send")
                 asyncio.run_coroutine_threadsafe(to_yuumi(ctxg), bot.loop)
