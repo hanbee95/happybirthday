@@ -18,7 +18,7 @@ def time_module():
     print("time module in use")
     while True:
         current_time = datetime.now().strftime("%H:%M")#hour %H min %M sec %S am:pm %p 
-        #print (current_time)
+        #print (current_time)##
         #print (ctxg)
         if current_time == "00:00": # enter the time you wish 
             if ctxg != 0:
