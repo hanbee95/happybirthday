@@ -22,7 +22,8 @@ def time_module():
         current_time = datetime.now().strftime("%m/%d/%Y, %H:%M")#hour %H min %M sec %S am:pm %p 
         #print (current_time)###
         #print (ctxg)
-        if current_time == "06/18/2022, 07:17": # enter the time you wish 
+        if current_time == "06/18/2022, 12:25": # enter the time you wish 
+            #CST 06/18/2022, 07:23, heroku 2022-06-18 12:23
             if ctxg != 0:
                 print ("send")
                 asyncio.run_coroutine_threadsafe(to_yuumi(ctxg), bot.loop)
