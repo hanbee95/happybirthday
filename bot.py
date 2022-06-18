@@ -17,7 +17,7 @@ ctxg = 0
 def time_module():
     print("time module in use")
     while True:
-        #print (datetime.now())
+        print (datetime.now())
         current_time = datetime.now().strftime("%m/%d/%Y, %H:%M")#hour %H min %M sec %S am:pm %p 
         #print (current_time)###
         #print (ctxg)
