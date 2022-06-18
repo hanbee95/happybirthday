@@ -1,5 +1,5 @@
 import os
-
+import time
 import asyncio
 import discord
 from dotenv import load_dotenv
@@ -17,6 +17,7 @@ ctxg = 0
 def time_module():
     print("time module in use")
     while True:
+        time.sleep(0.5)
         print (datetime.now())
         current_time = datetime.now().strftime("%m/%d/%Y, %H:%M")#hour %H min %M sec %S am:pm %p 
         #print (current_time)###
