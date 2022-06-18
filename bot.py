@@ -7,25 +7,31 @@ from discord.ext import commands
 from time import strftime
 from dateutil import parser
 from datetime import datetime
-
+from zoneinfo import ZoneInfo
+import zoneinfo
 #loop = asyncio.get_event_loop()
 
+alarmtime = "06/18/2022, 12:25"
+# for key in zoneinfo.available_timezones():
+#     if key.startswith("America"):
+#         print(key)
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 #GUILD = os.getenv('DISCORD_GUILD')
 ctxg = 0
 def time_module():
     print("time module in use")
+    print (alarmtime)
     while True:
         time.sleep(0.5)
-        print (datetime.now())
-        current_time = datetime.now().strftime("%m/%d/%Y, %H:%M")#hour %H min %M sec %S am:pm %p 
-        #print (current_time)###
+        #print (datetime.now())
+        current_time = datetime.now(ZoneInfo("America/Chicago")).strftime("%m/%d/%Y, %H:%M")#hour %H min %M sec %S am:pm %p 
+        print (current_time)###
         #print (ctxg)
-        if current_time == "06/18/2022, 12:25": # enter the time you wish 
+        if current_time == alarmtime: # enter the time you wish 
             #CST 06/18/2022, 07:23, heroku 2022-06-18 12:23
             if ctxg != 0:
-                print ("send")
+                print ("img sent")
                 asyncio.run_coroutine_threadsafe(to_yuumi(ctxg), bot.loop)
             print("time module ended")
             break
@@ -62,6 +68,14 @@ async def pre(ctx):
     asyncio.get_event_loop()    
     time_module()
     
+@bot.command()
+async def changetime(ctx, *args):
+    #print (args)
+    global alarmtime
+    alarmtime = args[0]+" "+args[1] 
+
+    await ctx.send("alarm time changed to " + alarmtime)
+
 @bot.command()
 async def to_yuumi(ctx):
     print ("check")
